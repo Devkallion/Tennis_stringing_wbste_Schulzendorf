@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: linear-gradient(160deg, oklch(95% 0.025 145) 0%, oklch(97% 0.015 95) 38%, oklch(96% 0.03 50) 100%); background-attachment: fixed; color: oklch(22% 0.015 90); font-family: 'Manrope', sans-serif; }
+    a { color: oklch(48% 0.09 150); text-decoration: none; }
+    a:hover { color: oklch(38% 0.08 150); text-decoration: underline; }
+    * { box-sizing: border-box; }
+    ::selection { background: oklch(85% 0.06 150); }
+  </style>
+  <script src="./image-slot.js"></script>
+</helmet>
+
+<div style="max-width:100%; overflow-x:hidden;">
+
+  <header style="position:sticky; top:0; z-index:50; background:oklch(99% 0.004 90 / 0.92); backdrop-filter:blur(8px); border-bottom:1px solid oklch(88% 0.015 90); display:flex; align-items:center; justify-content:space-between; padding:18px 32px;">
+    <div style="font-family:'PT Serif',serif; font-weight:600; font-size:20px; color:oklch(30% 0.03 150);">{{ t.siteName }}</div>
+    <nav style="display:flex; align-items:center; gap:28px;">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
+        <a href="{{ item.href }}" style="font-size:15px; font-weight:500; color:oklch(30% 0.02 90);">{{ item.label }}</a>
+      </sc-for>
+      <div style="display:flex; gap:6px; margin-left:8px; padding-left:16px; border-left:1px solid oklch(88% 0.015 90);">
+        <button onClick="{{ setLangDe }}" style="{{ langBtnStyleDe }}">DE</button>
+        <button onClick="{{ setLangEn }}" style="{{ langBtnStyleEn }}">EN</button>
+        <button onClick="{{ setLangRu }}" style="{{ langBtnStyleRu }}">RU</button>
+      </div>
+    </nav>
+  </header>
+
+  <section style="padding:88px 32px 96px;">
+    <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;">
+      <div>
+        <div style="display:inline-block; font-size:14px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:oklch(45% 0.13 45); background:oklch(96% 0.03 45); padding:6px 14px; border-radius:100px; margin-bottom:20px;">{{ t.hero.eyebrow }}</div>
+        <h1 style="font-family:'PT Serif',serif; font-size:48px; line-height:1.15; font-weight:700; margin:0 0 20px; color:oklch(24% 0.03 150);">{{ t.hero.title }}</h1>
+        <p style="font-size:18px; line-height:1.6; color:oklch(38% 0.02 90); max-width:520px; margin:0 0 32px;">{{ t.hero.subtitle }}</p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="#kontakt" style="background:oklch(48% 0.09 150); color:oklch(99% 0.004 90); padding:14px 26px; border-radius:8px; font-weight:600; font-size:16px;">{{ t.hero.ctaPrimary }}</a>
+          <a href="#preise" style="background:transparent; border:1.5px solid oklch(48% 0.09 150); color:oklch(38% 0.08 150); padding:12.5px 26px; border-radius:8px; font-weight:600; font-size:16px;">{{ t.hero.ctaSecondary }}</a>
+        </div>
+      </div>
+      <image-slot id="hero-image" shape="rounded" radius="18" placeholder="Foto: Bespannungs-Setup / Schläger" style="width:100%; height:360px;"></image-slot>
+    </div>
+  </section>
+
+  <section id="ueber-mich" style="padding:96px 32px;">
+    <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px; align-items:center;">
+      <image-slot id="about-image" shape="rounded" radius="18" placeholder="Foto: Daniil beim Bespannen" style="width:100%; height:320px;"></image-slot>
+      <div>
+        <h2 style="font-family:'PT Serif',serif; font-size:32px; font-weight:700; margin:0 0 18px; color:oklch(24% 0.03 150);">{{ t.about.title }}</h2>
+        <p style="font-size:17px; line-height:1.7; color:oklch(35% 0.02 90); max-width:600px;">{{ t.about.body }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="leistungen" style="padding:96px 32px;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <h2 style="font-family:'PT Serif',serif; font-size:32px; font-weight:700; margin:0 0 40px; text-align:center; color:oklch(24% 0.03 150);">{{ t.services.title }}</h2>
+      <div style="background:oklch(99% 0.004 90); border-radius:16px; padding:44px; max-width:760px; margin:0 auto; box-shadow:0 1px 3px oklch(0% 0 0 / 0.06);">
+        <h3 style="font-family:'PT Serif',serif; font-size:22px; font-weight:600; margin:0 0 14px; color:oklch(30% 0.05 150);">{{ t.services.item.title }}</h3>
+        <p style="font-size:16px; line-height:1.7; color:oklch(35% 0.02 90); margin:0 0 20px;">{{ t.services.item.body }}</p>
+        <div style="display:flex; gap:28px; flex-wrap:wrap; padding-top:16px; border-top:1px solid oklch(90% 0.015 90);">
+          <div style="display:flex; align-items:baseline; gap:8px;">
+            <span style="font-weight:600; color:oklch(45% 0.13 45); font-size:15px;">{{ t.services.turnaroundLabel }}</span>
+            <span style="font-size:15px; color:oklch(40% 0.02 90);">{{ t.services.turnaroundValue }}</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:8px;">
+            <span style="font-weight:600; color:oklch(45% 0.13 45); font-size:15px;">{{ t.services.handoverLabel }}</span>
+            <span style="font-size:15px; color:oklch(40% 0.02 90);">{{ t.services.handoverValue }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="preise" style="padding:96px 32px;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <h2 style="font-family:'PT Serif',serif; font-size:32px; font-weight:700; margin:0 0 12px; text-align:center; color:oklch(24% 0.03 150);">{{ t.pricing.title }}</h2>
+      <p style="text-align:center; color:oklch(45% 0.02 90); font-size:16px; margin:0 0 44px;">{{ t.pricing.note }}</p>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;">
+        <sc-for list="{{ pricingTiers }}" as="tier" hint-placeholder-count="3">
+          <div style="background:oklch(99% 0.004 90); border:1px solid oklch(88% 0.015 90); border-radius:16px; padding:32px 28px; display:flex; flex-direction:column; gap:12px;">
+            <div style="font-size:15px; font-weight:600; color:oklch(45% 0.13 45); text-transform:uppercase; letter-spacing:0.03em;">{{ tier.title }}</div>
+            <div style="font-family:'PT Serif',serif; font-size:34px; font-weight:700; color:oklch(24% 0.03 150);">{{ tier.price }}</div>
+            <div style="font-size:15px; line-height:1.6; color:oklch(38% 0.02 90);">{{ tier.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="saiten" style="padding:96px 32px;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <h2 style="font-family:'PT Serif',serif; font-size:32px; font-weight:700; margin:0 0 12px; text-align:center; color:oklch(24% 0.03 150);">{{ t.strings.title }}</h2>
+      <p style="text-align:center; color:oklch(45% 0.02 90); font-size:16px; margin:0 auto 44px; max-width:560px;">{{ t.strings.subtitle }}</p>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;">
+        <sc-for list="{{ stringCategories }}" as="cat" hint-placeholder-count="3">
+          <div style="background:oklch(99% 0.004 90); border-radius:16px; padding:28px; box-shadow:0 1px 3px oklch(0% 0 0 / 0.05);">
+            <h3 style="font-family:'PT Serif',serif; font-size:19px; font-weight:600; margin:0 0 6px; color:oklch(30% 0.05 150);">{{ cat.name }}</h3>
+            <div style="font-size:13px; color:oklch(50% 0.02 90); margin:0 0 16px;">{{ cat.tagline }}</div>
+            <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px;">
+              <sc-for list="{{ cat.models }}" as="model" hint-placeholder-count="2">
+                <li style="font-size:15px; color:oklch(30% 0.02 90); padding:8px 0; border-top:1px solid oklch(90% 0.015 90);">{{ model }}</li>
+              </sc-for>
+            </ul>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="standort" style="padding:96px 32px;">
+    <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;">
+      <div>
+        <h2 style="font-family:'PT Serif',serif; font-size:32px; font-weight:700; margin:0 0 18px; color:oklch(24% 0.03 150);">{{ t.location.title }}</h2>
+        <p style="font-size:17px; line-height:1.7; color:oklch(35% 0.02 90); max-width:520px; margin:0 0 20px;">{{ t.location.body }}</p>
+        <div style="display:flex; align-items:center; gap:10px; font-size:15px; font-weight:600; color:oklch(38% 0.08 150);">
+          <span>📍</span><span>Schulzendorf, bei Berlin</span>
+        </div>
+      </div>
+      <iframe title="Karte Schulzendorf" src="https://www.google.com/maps?q=Schulzendorf,+Germany&amp;output=embed" style="width:100%; height:300px; border:0; border-radius:18px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <section id="kontakt" style="padding:96px 32px 120px;">
+    <div style="max-width:640px; margin:0 auto; text-align:center;">
+      <h2 style="font-family:'PT Serif',serif; font-size:32px; font-weight:700; margin:0 0 12px; color:oklch(24% 0.03 150);">{{ t.contact.title }}</h2>
+      <p style="font-size:16px; line-height:1.6; color:oklch(38% 0.02 90); margin:0 0 32px;">{{ t.contact.subtitle }}</p>
+      <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+        <a href="https://wa.me/4915202514940" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; background:oklch(48% 0.09 150); color:oklch(99% 0.004 90); padding:14px 26px; border-radius:8px; font-weight:600; font-size:16px;">{{ t.contact.whatsappCta }}</a>
+        <a href="https://calendly.com/daniel-v-kachkin/30min" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; background:oklch(65% 0.13 45); color:oklch(15% 0.02 45); padding:14px 26px; border-radius:8px; font-weight:600; font-size:16px;">{{ t.contact.calendarCta }}</a>
+        <a href="mailto:daniel.v.kachkin@gmail.com" style="display:inline-flex; align-items:center; gap:8px; background:transparent; border:1.5px solid oklch(48% 0.09 150); color:oklch(38% 0.08 150); padding:12.5px 26px; border-radius:8px; font-weight:600; font-size:16px;">✉ daniel.v.kachkin@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding:32px; text-align:center; font-size:14px; color:oklch(48% 0.02 90); border-top:1px solid oklch(88% 0.015 90);">
+    {{ t.footer }}
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'de' };
+
+  translations = {
+    de: {
+      siteName: '',
+      nav: [
+        { label: 'Leistungen', href: '#leistungen' },
+        { label: 'Preise', href: '#preise' },
+        { label: 'Saiten', href: '#saiten' },
+        { label: 'Standort', href: '#standort' },
+        { label: 'Kontakt', href: '#kontakt' },
+      ],
+      hero: {
+        eyebrow: 'Bespannservice in Schulzendorf',
+        title: 'Deine Saiten. Dein Spiel.',
+        subtitle: 'Ich besaite deinen Schläger sorgfältig und zuverlässig – bei mir zu Hause, für Spieler aus  Schulzendorf, Eichwalde, Zeuthen und Umgebung.',
+        ctaPrimary: 'Termin anfragen',
+        ctaSecondary: 'Preise ansehen',
+      },
+      about: {
+        title: 'Über mich',
+        body: 'Ich heiße Daniil, spiele seit vielen Jahren aktiv Tennis im Steglitzer Tennis Klub in Berlin und besaite Schläger mit viel Sorgfalt und Freude am Detail. Ich helfe gerne Spielern aus der Region zu einem besser bespannten Schläger.',
+      },
+      services: {
+        title: 'Leistungen',
+        item: {
+          title: 'Schläger bespannen',
+          body: 'Saubere, gleichmäßige Bespannung mit der gewünschten Spannung – du bringst deinen Schläger vorbei oder wir vereinbaren eine Abgabe, ich bespanne ihn sorgfältig bei mir zu Hause.',
+        },
+        turnaroundLabel: 'Dauer:',
+        turnaroundValue: 'in der Regel 1–2 Tage',
+        handoverLabel: 'Abgabe:',
+        handoverValue: 'in Schulzendorf, nach Absprache',
+      },
+      pricing: {
+        title: 'Preise',
+        note: 'Alle Preise pro Schläger.',
+        tiers: [
+          { title: 'Nur Bespannen', price: '10 €', desc: 'Du bringst deine eigene Saite mit, ich übernehme die Arbeit.' },
+          { title: 'Mit Standardsaite', price: '20 €', desc: 'Inklusive einer Saite aus meiner Standardauswahl.' },
+          { title: 'Wunschsaite', price: '10 € + Saitenpreis', desc: 'Du wünschst dir eine bestimmte Saite – ich bestelle sie für dich. Etwas längere Lieferzeit.' },
+        ],
+      },
+      strings: {
+        title: 'Saitenauswahl',
+        subtitle: 'Eine Auswahl bewährter Saiten aus verschiedenen Kategorien – für Wunschsaiten frage ich gerne weitere Modelle an.',
+        categories: [
+          { name: 'Polyester', tagline: 'Haltbar, viel Kontrolle', models: ['Babolat RPM Blast', 'Luxilon ALU Power'] },
+          { name: 'Multifilament', tagline: 'Komfort, armschonend', models: ['Wilson NXT', 'Tecnifibre X-One Biphase'] },
+          { name: 'Synthetic Gut', tagline: 'Allrounder, günstig', models: ['Head Synthetic Gut PPS', 'Wilson Sensation'] },
+        ],
+      },
+      location: {
+        title: 'Standort & Abgabe',
+        body: 'Ich besaite zu Hause in Schulzendorf, bei Berlin. Abgabe und Abholung nach Absprache – gerne auch abends oder am Wochenende.',
+      },
+      contact: {
+        title: 'Kontakt',
+        subtitle: 'Schreib mir eine Nachricht oder buche direkt einen Termin.',
+        calendarCta: 'Termin online buchen',
+        whatsappCta: 'Per WhatsApp schreiben',
+      },
+      footer: '© 2026 Daniil Kachkin – Saitenservice Schulzendorf',
+    },
+    en: {
+      siteName: '',
+      nav: [
+        { label: 'Services', href: '#leistungen' },
+        { label: 'Pricing', href: '#preise' },
+        { label: 'Strings', href: '#saiten' },
+        { label: 'Location', href: '#standort' },
+        { label: 'Contact', href: '#kontakt' },
+      ],
+      hero: {
+        eyebrow: 'Racquet stringing in Schulzendorf',
+        title: 'Freshly strung, ready to play.',
+        subtitle: 'I restring your racquet carefully and reliably — at my home, for local players from Schulzendorf, Eichwalde, Zeuthen and surrounding area.',
+        ctaPrimary: 'Appointment',
+        ctaSecondary: 'See pricing',
+      },
+      about: {
+        title: 'About me',
+        body: "My name is Daniil — I play competitively on a club level for many years at Steglitzer Tennis Klub in Berlin, and I string racquets with care and attention to detail. Happy to help local players get a better-strung racquet.",
+      },
+      services: {
+        title: 'Services',
+        item: {
+          title: 'Racquet stringing',
+          body: "Clean, even stringing at your preferred tension — drop off your racquet or arrange a handover, and I'll string it carefully at home.",
+        },
+        turnaroundLabel: 'Turnaround:',
+        turnaroundValue: 'usually 1–2 days',
+        handoverLabel: 'Drop-off:',
+        handoverValue: 'in Schulzendorf, by arrangement',
+      },
+      pricing: {
+        title: 'Pricing',
+        note: 'All prices per racquet.',
+        tiers: [
+          { title: 'Labour only', price: '€10', desc: 'Bring your own string, I do the stringing.' },
+          { title: 'With standard string', price: '€20', desc: 'Includes a string from my standard selection.' },
+          { title: 'Specific string', price: '€10 + string cost', desc: "Want a particular string? I'll order it for you. Turnaround is a bit longer." },
+        ],
+      },
+      strings: {
+        title: 'String selection',
+        subtitle: "A selection of trusted strings across categories — for special requests I'm happy to source other models too.",
+        categories: [
+          { name: 'Polyester', tagline: 'Durability, control', models: ['Babolat RPM Blast', 'Luxilon ALU Power'] },
+          { name: 'Multifilament', tagline: 'Comfort, arm-friendly', models: ['Wilson NXT', 'Tecnifibre X-One Biphase'] },
+          { name: 'Synthetic gut', tagline: 'All-rounder, affordable', models: ['Head Synthetic Gut PPS', 'Wilson Sensation'] },
+        ],
+      },
+      location: {
+        title: 'Location & drop-off',
+        body: 'I string racquets at home in Schulzendorf, near Berlin. Drop-off and pick-up by arrangement — evenings and weekends work too.',
+      },
+      contact: {
+        title: 'Contact',
+        subtitle: 'Send a message or book a time directly.',
+        calendarCta: 'Book online',
+        whatsappCta: 'Message on WhatsApp',
+      },
+      footer: '© 2026 Daniil Kachkin – Stringing service Schulzendorf',
+    },
+    ru: {
+      siteName: '',
+      nav: [
+        { label: 'Услуги', href: '#leistungen' },
+        { label: 'Цены', href: '#preise' },
+        { label: 'Струны', href: '#saiten' },
+        { label: 'Локация', href: '#standort' },
+        { label: 'Контакты', href: '#kontakt' },
+      ],
+      hero: {
+        eyebrow: 'Натяжка струн в Schulzendorf',
+        title: 'Свежими струнами играть приятнее.',
+        subtitle: 'Аккуратно и надёжно натяну струны на вашей ракетке. Для местных игроков из Schulzendorf, Eichwalde, Zeuthen и окрестностей.',
+        ctaPrimary: 'Записаться',
+        ctaSecondary: 'Цены',
+      },
+      about: {
+        title: 'Обо мне',
+        body: 'Меня зовут Даниил, я много лет играю в теннис в клубе Steglitzer Tennis Klub в Берлине и с удовольствием натягиваю струны, уделяя внимание каждой детали. Буду рад помочь игрокам из округи с качественной натяжкой.',
+      },
+      services: {
+        title: 'Услуги',
+        item: {
+          title: 'Натяжка струн',
+          body: 'Чистая, равномерная натяжка с нужным натяжением — привези ракетку или договоримся о передаче, натяну аккуратно у себя дома.',
+        },
+        turnaroundLabel: 'Срок:',
+        turnaroundValue: 'обычно 1–2 дня',
+        handoverLabel: 'Передача:',
+        handoverValue: 'в Шульцендорфе, по договорённости',
+      },
+      pricing: {
+        title: 'Цены',
+        note: 'Все цены за одну ракетку.',
+        tiers: [
+          { title: 'Только работа', price: '10 €', desc: 'Вы приносите свои струны, я делаю натяжку.' },
+          { title: 'Со стандартными струнами', price: '20 €', desc: 'Включает струны из моего стандартного набора.' },
+          { title: 'Струна на заказ', price: '10 € + цена струн', desc: 'Если хотите конкретные струны — закажу и натяну их для Вас. Срок немного дольше.' },
+        ],
+      },
+      strings: {
+        title: 'Выбор струн',
+        subtitle: 'Подборка проверенных струн разных категорий — для струн на заказ можно уточнить и другие модели.',
+        categories: [
+          { name: 'Полиэстер', tagline: 'Прочность, контроль', models: ['Babolat RPM Blast', 'Luxilon ALU Power'] },
+          { name: 'Мультифиламент', tagline: 'Комфорт', models: ['Wilson NXT', 'Tecnifibre X-One Biphase'] },
+          { name: 'Синтетика', tagline: 'Бюджетный вариант', models: ['Head Synthetic Gut PPS', 'Wilson Sensation'] },
+        ],
+      },
+      location: {
+        title: 'Локация и передача',
+        body: 'Натягиваю у себя дома в Шульцендорфе, рядом с Берлином. Передача и получение по договорённости — можно вечером или в выходные.',
+      },
+      contact: {
+        title: 'Контакты',
+        subtitle: 'Напиши сообщение или сразу забронируй время.',
+        calendarCta: 'Забронировать онлайн',
+        whatsappCta: 'Написать в WhatsApp',
+      },
+      footer: '© 2026 Даниил Качкин — натяжка струн, Шульцендорф',
+    },
+  };
+
+  setLang = (l) => this.setState({ lang: l });
+
+  langBtnStyle(active) {
+    return {
+      border: 'none',
+      background: active ? 'oklch(48% 0.09 150)' : 'transparent',
+      color: active ? 'oklch(99% 0.004 90)' : 'oklch(45% 0.02 90)',
+      fontWeight: 600,
+      fontSize: '13px',
+      padding: '5px 9px',
+      borderRadius: '6px',
+      cursor: 'pointer',
+    };
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = this.translations[lang];
+    return {
+      t,
+      navItems: t.nav,
+      pricingTiers: t.pricing.tiers,
+      stringCategories: t.strings.categories,
+      setLangDe: () => this.setLang('de'),
+      setLangEn: () => this.setLang('en'),
+      setLangRu: () => this.setLang('ru'),
+      langBtnStyleDe: this.langBtnStyle(lang === 'de'),
+      langBtnStyleEn: this.langBtnStyle(lang === 'en'),
+      langBtnStyleRu: this.langBtnStyle(lang === 'ru'),
+    };
+  }
+}
+</script>
+</body>
+</html>
